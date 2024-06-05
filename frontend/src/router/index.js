@@ -41,10 +41,14 @@ const router = createRouter({
         },
         {
             path: '/admin',
-            name: 'admin',
-            component: () => import('@/views/admin/HomeView.vue'),
-            meta: {title: "管理大屏"},
+            component: () => import('@/views/admin/AdminView.vue'),
             children: [
+                {
+                    path: '/admin/',
+                    name: 'admin-panel',
+                    component: () => import('@/views/admin/HomeView.vue'),
+                    meta: {title: "管理员登录"}
+                },
                 {
                     path: '/admin/login',
                     name: 'admin-login',
