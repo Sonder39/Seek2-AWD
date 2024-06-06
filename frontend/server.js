@@ -1,8 +1,14 @@
 import express from "express";
 import cors from "cors";
+
 const app = express();
 app.use(cors());
 
+const resData = {
+    "data": "更新设置成功！",
+    "error": 0,
+    "msg": "success"
+}
 const logData = [
     {
         "ID": 1,
@@ -40,6 +46,42 @@ const panelData = {
     "error": 0,
     "msg": "success"
 }
+const configData = {
+    "data": [
+        {
+            "Key": "title",
+            "Value": "CSSEC",
+            "Kind": 0,
+            "Options": ""
+        },
+        {
+            "Key": "flag_prefix",
+            "Value": "flag{",
+            "Kind": 0,
+            "Options": ""
+        },
+        {
+            "Key": "flag_suffix",
+            "Value": "}",
+            "Kind": 0,
+            "Options": ""
+        },
+        {
+            "Key": "animate_asteroid",
+            "Value": "true",
+            "Kind": 1,
+            "Options": ""
+        },
+        {
+            "Key": "show_others_gamebox",
+            "Value": "true",
+            "Kind": 1,
+            "Options": ""
+        }
+    ],
+    "error": 0,
+    "msg": "success"
+}
 
 
 app.get('/api/admin/logs', (req, res) => {
@@ -51,7 +93,12 @@ app.get('/api/admin/rank', (req, res) => {
 app.get('/api/admin/panel', (req, res) => {
     res.json(panelData);
 });
-
+app.get('/api/admin/configs', (req, res) => {
+    res.json(configData);
+});
+app.put('/api/admin/config', (req, res) => {
+    res.json(resData);
+});
 app.listen(9999, () => {
     console.log('Server is running at http://localhost:9999');
 });

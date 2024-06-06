@@ -5,7 +5,8 @@ import axios from "axios";
 const panelDataRef = ref([])
 onMounted(async ()=>{
   const response = await axios.get("http://localhost:9999/api/admin/panel")
-  panelDataRef.value = response.data.data;
+  panelDataRef.value = response.data.data
+  // window.alert(response.data.msg)
 })
 </script>
 
